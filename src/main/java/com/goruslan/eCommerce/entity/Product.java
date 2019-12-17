@@ -1,8 +1,10 @@
 package com.goruslan.eCommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -14,6 +16,7 @@ import java.util.Date;
 @Table(name="product")
 @Getter
 @Setter
+@ToString
 public class Product {
 
     @Id
@@ -21,8 +24,9 @@ public class Product {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
+    @JsonIgnore
     private ProductCategory category;
 
     @Column(name = "name")
