@@ -1,5 +1,6 @@
 package com.goruslan.eCommerce.entity;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
+@JsonFilter("ProductFilter")
 public class Product {
 
     @Id
