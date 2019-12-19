@@ -25,4 +25,15 @@ public class ProductFilter {
         return mapping;
     }
 
+    public static MappingJacksonValue filterProduct(Product product, String... propertyArray) {
+        SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept(propertyArray);
+        String filterName = Product.class.getAnnotation(JsonFilter.class).value();
+        FilterProvider filters = new SimpleFilterProvider().addFilter(filterName, filter);
+
+        MappingJacksonValue mapping = new MappingJacksonValue(product);
+        mapping.setFilters(filters);
+
+        return mapping;
+    }
+
 }

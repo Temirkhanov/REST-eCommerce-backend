@@ -28,24 +28,17 @@ public class ProductController {
     // All Products
     @GetMapping("/products")
     public MappingJacksonValue getAllProducts(){
-        return ProductFilter.filterProductList(productRepository.findAll(), "id");
-        // return productRepository.findAll();
+        return ProductFilter.filterProductList(productRepository.findAll(), "id", "name", "unitPrice", "imageUrl");
     }
-
-    @GetMapping("/products-filtered")
-    public MappingJacksonValue getAllProductsFiltered(){
-        return ProductFilter.filterProductList(productRepository.findAll(), "id", "name", "unitPrice");
-    }
-
 
     // Specific Product
     @GetMapping("/products/{id}")
-    public Product getProduct(@PathVariable long id) {
+    public MappingJacksonValue getProduct(@PathVariable long id) {
         Optional<Product> product = productRepository.findById(id);
         if(!product.isPresent()){
             throw new NotFoundException("id - " + id);
         }
-        return product.get();
+        return ProductFilter.filterProduct(product.get(), "id", "name", "unitPrice", "imageUrl", "description", "unitPrice", "unitsInStock");
     }
 
     // Get All Categories
