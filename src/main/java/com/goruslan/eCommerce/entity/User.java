@@ -1,7 +1,10 @@
 package com.goruslan.eCommerce.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "user")
 public class User {
@@ -19,5 +22,8 @@ public class User {
     @Column(name="password")
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role")
+    private Role role;
 
 }
