@@ -13,23 +13,15 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name="product")
-@Getter
-@Setter
-@ToString
 @JsonFilter("ProductFilter")
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", nullable = false)
-    @JsonIgnore
-    private ProductCategory category;
 
     @Column(name = "name")
     private String name;
@@ -37,24 +29,13 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "unit_price")
-    private BigDecimal unitPrice;
+    @Column(name = "price")
+    private BigDecimal price;
 
     @Column(name = "image_url", length = 10000) // Fix the length
     private String imageUrl;
 
-    @Column(name = "active")
-    private boolean active;
-
     @Column(name = "units_in_stock")
     private int unitsInStock;
-
-    @Column(name = "date_created")
-    @CreationTimestamp
-    private Date dateCreated;
-
-    @Column(name = "last_updated")
-    @UpdateTimestamp
-    private Date lastUpdated;
 
 }
