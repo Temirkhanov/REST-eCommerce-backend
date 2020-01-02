@@ -40,7 +40,7 @@ public class Product {
     @Column(name = "unit_price")
     private BigDecimal unitPrice;
 
-    @Column(name = "image_url")
+    @Column(name = "image_url", length = 10000) // Fix the length
     private String imageUrl;
 
     @Column(name = "active")
