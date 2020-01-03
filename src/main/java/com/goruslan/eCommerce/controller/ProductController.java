@@ -1,9 +1,7 @@
 package com.goruslan.eCommerce.controller;
 
 import com.goruslan.eCommerce.entity.Product;
-import com.goruslan.eCommerce.entity.ProductCategory;
 import com.goruslan.eCommerce.exception.NotFoundException;
-import com.goruslan.eCommerce.repository.ProductCategoryRepository;
 import com.goruslan.eCommerce.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -22,9 +20,6 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    @Autowired
-    private ProductCategoryRepository productCategoryRepository;
-
     // All Products
     @GetMapping("/products")
     public MappingJacksonValue getAllProducts(){
@@ -41,19 +36,5 @@ public class ProductController {
         return ProductFilter.filterProduct(product.get(), "id", "name", "unitPrice", "imageUrl", "description", "unitPrice", "unitsInStock");
     }
 
-    // Get All Categories
-    @GetMapping("/categories")
-    public List<ProductCategory> getAllCategories(){
-        return productCategoryRepository.findAll();
-    }
-
-    // Get the Category
-    @GetMapping("/categories/{id}")
-    public ProductCategory getProductsByCategory(@PathVariable Long id){
-        Optional<ProductCategory> category = productCategoryRepository.findById(id);
-        if(!category.isPresent())
-            throw new NotFoundException("catId - " + id);
-        return category.get();
-    }
 
 }

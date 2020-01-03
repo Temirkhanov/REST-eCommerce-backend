@@ -22,4 +22,48 @@
             DROP table user;
         </rollback>
     </changeSet>
+    <changeSet id="2" author="goruslan">
+        <sql>
+            CREATE TABLE product (
+            id BIGINT NOT NULL AUTO_INCREMENT,
+            name VARCHAR(255) NOT NULL,
+            price DOUBLE,
+            description VARCHAR(1000),
+            CONSTRAINT PK_id PRIMARY KEY (id)
+            );
+        </sql>
+        <rollback>
+            DROP TABLE product;
+        </rollback>
+    </changeSet>
+    <changeSet id="3" author="goruslan">
+        <sql>
+            INSERT INTO product (name, price, description) values("Prod 1", 14.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 2", 24.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 3", 44.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 4", 54.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 5", 14.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 6", 24.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 7", 74.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 8", 454.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 9", 34.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, description) values("Prod 10", 64.58, "Amazing product and worth buying. You will absolutely love it");
+        </sql>
+        <rollback>
+            TRUNCATE TABLE product;
+        </rollback>
+    </changeSet>
+    <changeSet id="4" author="goruslan">
+        <sql>
+            CREATE TABLE transaction(
+            id BIGINT NOT NULL AUTO_INCREMENT,
+            product_id BIGINT NOT NULL,
+            user_id BIGINT NOT NULL,
+            purchase_date DATETIME NOT NULL,
+            CONSTRAINT PK_id PRIMARY KEY (id)
+            CONSTRAINT fk_tran_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE ON UPDATE CASCADE,
+            CONSTRAINT fk_tran_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+            );
+        </sql>
+    </changeSet>
  </databaseChangeLog>
