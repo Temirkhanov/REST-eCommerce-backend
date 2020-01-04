@@ -60,10 +60,15 @@
             product_id BIGINT NOT NULL,
             user_id BIGINT NOT NULL,
             purchase_date DATETIME NOT NULL,
-            CONSTRAINT PK_id PRIMARY KEY (id)
-            CONSTRAINT fk_tran_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE ON UPDATE CASCADE,
-            CONSTRAINT fk_tran_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+            CONSTRAINT PK_id PRIMARY KEY (id),
+            CONSTRAINT fk_tran_product FOREIGN KEY (product_id) REFERENCES product(id) ON DELETE CASCADE ON UPDATE
+            CASCADE,
+            CONSTRAINT fk_tran_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE
+            CASCADE
             );
         </sql>
+        <rollback>
+        DROP TABLE transaction;
+        </rollback>
     </changeSet>
  </databaseChangeLog>
