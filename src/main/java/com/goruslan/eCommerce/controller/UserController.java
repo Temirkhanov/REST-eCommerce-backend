@@ -1,6 +1,7 @@
 package com.goruslan.eCommerce.controller;
 
 import com.goruslan.eCommerce.entity.Role;
+import com.goruslan.eCommerce.entity.Transaction;
 import com.goruslan.eCommerce.entity.User;
 import com.goruslan.eCommerce.service.ProductService;
 import com.goruslan.eCommerce.service.TransactionService;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 
 @RestController
 public class UserController {
@@ -58,6 +60,17 @@ public class UserController {
             return ResponseEntity.ok(principal);
         }
         return new ResponseEntity<>(userService.findByUsername(principal.getName()), HttpStatus.OK);
+    }
+
+    @PostMapping("/api/user/purchase")
+    public ResponseEntity<?> purchaseProduct(@RequestBody Transaction transaction) {
+        transaction.setPurchaseDate(LocalDateTime.now());
+        return new ResponseEntity<>(transactionService.saveTransaction(transaction), HttpStatus.CREATED);
+    }
+
+    @GetMapping("/api/user/products")
+    public ResponseEntity<?> getAllProducts(){
+        return new ResponseEntity<>(productService.findAllProducts(), HttpStatus.OK);
     }
 
 
