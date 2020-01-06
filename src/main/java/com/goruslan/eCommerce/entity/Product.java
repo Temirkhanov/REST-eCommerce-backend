@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name="product")
-@JsonFilter("ProductFilter")
 public class Product {
 
     @Id
