@@ -86,6 +86,17 @@ public class AdminController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/api/admin/transaction-all")
+    public ResponseEntity<?> findAllTransactions(){
+        return new ResponseEntity<>(transactionService.findAllTransactions(), HttpStatus.OK);
+    }
 
+    @GetMapping("api/admin/transaction-number")
+    public ResponseEntity<?> numberOfTransactions(){
+        Long number = transactionService.numberOfTransactions();
+        StringResponse response = new StringResponse();
+        response.setResponse(number.toString());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
 }
