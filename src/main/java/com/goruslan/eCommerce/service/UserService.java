@@ -10,7 +10,7 @@ public interface UserService {
     User saveUser(User user);
 
     // Method 'save' can be used for updating and inserting operation
-    User upadteUser(User user);
+    User updateUser(User user);
 
     void deleteUser(Long userId);
 

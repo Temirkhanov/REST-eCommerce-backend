@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
     // Method 'save' can be used for updating and inserting operation
     @Override
-    public User upadteUser(User user) {
+    public User updateUser(User user) {
         return userRepository.save(user);
     }
 
