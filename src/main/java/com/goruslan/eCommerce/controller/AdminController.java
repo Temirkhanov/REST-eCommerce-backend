@@ -1,5 +1,6 @@
 package com.goruslan.eCommerce.controller;
 
+import com.goruslan.eCommerce.entity.Product;
 import com.goruslan.eCommerce.entity.StringResponse;
 import com.goruslan.eCommerce.entity.User;
 import com.goruslan.eCommerce.service.ProductService;
@@ -54,6 +55,37 @@ public class AdminController {
         // For return, use String Response because long is not a suitable response for rest api
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @PostMapping("/api/admin/product-create")
+    public ResponseEntity<?> createProduct(@RequestBody Product product){
+        return new ResponseEntity<>(productService.saveProduct(product), HttpStatus.CREATED);
+    }
+
+    @PutMapping("/api/admin/product-update")
+    public ResponseEntity<?> updateProduct(@RequestBody Product product){
+        return new ResponseEntity<>(productService.updateProduct(product), HttpStatus.CREATED);
+    }
+
+    //This can be also @DeleteMapping.
+    @PostMapping("/api/admin/product-delete")
+    public ResponseEntity<?> deleteProduct(@RequestBody Product product){
+        productService.deleteProduct(product.getId());
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/api/admin/product-all")
+    public ResponseEntity<?> findAllProducts(){
+        return new ResponseEntity<>(productService.findAllProducts(), HttpStatus.OK);
+    }
+
+    @GetMapping("/api/admin/product-number")
+    public ResponseEntity<?> numberOfProducts(){
+        Long number = productService.numberOfProducts();
+        StringResponse response = new StringResponse();
+        response.setResponse(number.toString());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 
 
 }
