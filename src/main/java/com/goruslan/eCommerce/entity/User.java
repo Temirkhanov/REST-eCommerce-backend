@@ -26,4 +26,7 @@ public class User {
     @Column(name = "role")
     private Role role;
 
+    @Transient // Not storing it in database
+    private String token;
+
 }
