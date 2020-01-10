@@ -13,29 +13,16 @@ These instructions will get you a copy of the project up and running on your loc
 * Gradle ```$ sdk install gradle 6.0.1 ```
 * Postman [download](https://www.getpostman.com/downloads/)  - Testing purposes
 
-### Installing
-cd into project folder 
+### Build
+Open terminal and go to project folder: 
 ```
 $ cd eCommerce-backend
 ```
-
-If you have gradle installed and under linux/mac:
+Build it with gradle:
 ```
-$ gradle runJar
-```
-If gradle is not installed, but still under linux/mac
-```
-$ gradlew runJar
-```
-And for windows without gradle
-```
-$ gradlew.bat runJar
-```
-then 
-```
+$ gradlew bootJar
 $ gradlew bootRun
 ```
-After the server is running, go to ```http://localhost:8080/api/user/products``` to see products in JSON format. 
 
 ## API Endpoints
 
