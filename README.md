@@ -2,10 +2,6 @@
 
 A secure microservice with CRUD operations for Users, Products, and Transactions built using Spring Boot. This eCommerce app gives you complete control over your online store and lets you easily manage and see data from the database from admin dashboard.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
 ### Prerequisites
 
 * MySQL [download](dev.mysql.com/downloads/mysql/)
@@ -14,12 +10,9 @@ These instructions will get you a copy of the project up and running on your loc
 * Postman [download](https://www.getpostman.com/downloads/)  - Testing purposes
 
 ### Build
-Open terminal and go to project folder: 
+In the command line: 
 ```
 $ cd eCommerce-backend
-```
-Build it with gradle:
-```
 $ gradlew bootJar
 $ gradlew bootRun
 ```
