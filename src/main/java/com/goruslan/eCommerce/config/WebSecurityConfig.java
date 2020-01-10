@@ -1,6 +1,9 @@
 package com.goruslan.eCommerce.config;
 
+import com.goruslan.eCommerce.jwt.JwtAuthorizationFilter;
+import com.goruslan.eCommerce.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,6 +20,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
     private UserDetailsService userDetailsService;
@@ -46,6 +52,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .httpBasic().and()
                 // Cross side request forgery
                 .csrf().disable();
+
+        http.addFilter(new JwtAuthorizationFilter(authenticationManager(), jwtTokenProvider));
     }
 
     @Override

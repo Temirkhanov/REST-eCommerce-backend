@@ -3,6 +3,7 @@ package com.goruslan.eCommerce.controller;
 import com.goruslan.eCommerce.entity.Role;
 import com.goruslan.eCommerce.entity.Transaction;
 import com.goruslan.eCommerce.entity.User;
+import com.goruslan.eCommerce.jwt.JwtTokenProvider;
 import com.goruslan.eCommerce.service.ProductService;
 import com.goruslan.eCommerce.service.TransactionService;
 import com.goruslan.eCommerce.service.UserService;
@@ -20,6 +21,9 @@ import java.time.LocalDateTime;
 
 @RestController
 public class UserController {
+
+    @Autowired
+    private JwtTokenProvider tokenProvider;
 
     @Autowired
     private UserService userService;
@@ -48,18 +52,18 @@ public class UserController {
         return new ResponseEntity<>(userService.saveUser(user), HttpStatus.CREATED);
     }
 
-    /**
-     * @param principal
-     * @return ResponseEntity
-     */
     @GetMapping("/api/user/login")
     public ResponseEntity<?> getUser(Principal principal){
-        //principal = httpServletRequest.getUserPrincipal.
-        if(principal == null || principal.getName() == null){
-            //logout will also use here so we should return ok http status.
+        if(principal == null){
+            // Logout will also use this endpoint so we should return ok http status.
             return ResponseEntity.ok(principal);
         }
-        return new ResponseEntity<>(userService.findByUsername(principal.getName()), HttpStatus.OK);
+        // Get Auth value from Principal
+        UsernamePasswordAuthenticationToken authenticationToken =
+                (UsernamePasswordAuthenticationToken) principal;
+        User user = userService.findByUsername(authenticationToken.getName());
+        user.setToken(tokenProvider.generateToken(authenticationToken));
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping("/api/user/purchase")
