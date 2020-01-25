@@ -24,8 +24,8 @@ public class Product {
     @Column(name = "price")
     private BigDecimal price;
 
-//    @Column(name = "image_url", length = 10000) // Fix the length
-//    private String imageUrl;
+    @Column(name = "image") // Fix the length
+    private String image;
 
 //    @Column(name = "units_in_stock")
 //    private int unitsInStock;

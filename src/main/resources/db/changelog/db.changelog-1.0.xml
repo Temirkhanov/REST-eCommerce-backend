@@ -28,6 +28,7 @@
             id BIGINT NOT NULL AUTO_INCREMENT,
             name VARCHAR(255) NOT NULL,
             price DOUBLE,
+            image VARCHAR(1000),
             description VARCHAR(1000),
             CONSTRAINT PK_id PRIMARY KEY (id)
             );
@@ -38,16 +39,14 @@
     </changeSet>
     <changeSet id="3" author="goruslan">
         <sql>
-            INSERT INTO product (name, price, description) values("Prod 1", 14.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 2", 24.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 3", 44.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 4", 54.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 5", 14.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 6", 24.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 7", 74.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 8", 454.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 9", 34.58, "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, description) values("Prod 10", 64.58, "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Premium Test Hoodie", 46.88,"https://static.turbosquid.com/Preview/001231/341/4C/3D-model-hood-hoodie_D.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("The Comfort Hoodie", 34.51,"https://img-new.cgtrader.com/items/839593/dd232aaf31/mens-hoodie-marvelous-designer-3d-model-obj-mtl-zpac-avt-pos-ZPrj.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("High Quality Shirt", 24.58,"https://d1a9v60rjx2a4v.cloudfront.net/2014/01/14/20_06_20_653_2_1.png", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Best Polo Shirt", 50.99,"https://img-new.cgtrader.com/items/1985040/55d61787ac/mens-long-sleeve-polo-shirt-3d-model-obj-mtl-fbx.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Rash Guard", 40.87,"https://img1.cgtrader.com/items/982805/607016ba77/player-t-shirt-3d-model-low-poly-obj-c4d-ztl.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Long Sleeve Rash Guard", 50.00,"https://cdn11.bigcommerce.com/s-ve78f4gtf2/images/stencil/500x659/products/177/1130/circulatory_system_rasguard_long_4__74461.1537026875.jpg?c=2", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Premium Gi", 110.00,"https://d1a9v60rjx2a4v.cloudfront.net/2017/03/04/11_04_26_538_Thumb1_1.jpg", "Amazing product and worth buying. You will absolutely love it");
+
         </sql>
         <rollback>
             TRUNCATE TABLE product;
