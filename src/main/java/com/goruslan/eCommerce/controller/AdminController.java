@@ -9,11 +9,9 @@ import com.goruslan.eCommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
+@RestController
 public class AdminController {
 
     @Autowired
@@ -51,6 +49,7 @@ public class AdminController {
     public ResponseEntity<?> numberOfUsers(){
         Long number = userService.numberOfUsers();
         StringResponse response = new StringResponse();
+        System.out.println(response);
         response.setResponse(number.toString());
         // For return, use String Response because long is not a suitable response for rest api
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -80,6 +79,7 @@ public class AdminController {
 
     @GetMapping("/api/admin/product-number")
     public ResponseEntity<?> numberOfProducts(){
+        System.out.println("Product-number works!");
         Long number = productService.numberOfProducts();
         StringResponse response = new StringResponse();
         response.setResponse(number.toString());
