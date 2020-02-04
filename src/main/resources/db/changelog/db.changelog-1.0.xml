@@ -37,15 +37,15 @@
             DROP TABLE product;
         </rollback>
     </changeSet>
-    <changeSet id="3" author="goruslan">
+    <changeSet id="5" author="goruslan">
         <sql>
-            INSERT INTO product (name, price, image, description) values("Premium Test Hoodie", 46.88,"https://static.turbosquid.com/Preview/001231/341/4C/3D-model-hood-hoodie_D.jpg", "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, image, description) values("The Comfort Hoodie", 34.51,"https://img-new.cgtrader.com/items/839593/dd232aaf31/mens-hoodie-marvelous-designer-3d-model-obj-mtl-zpac-avt-pos-ZPrj.jpg", "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, image, description) values("High Quality Shirt", 24.58,"https://d1a9v60rjx2a4v.cloudfront.net/2014/01/14/20_06_20_653_2_1.png", "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, image, description) values("Best Polo Shirt", 50.99,"https://img-new.cgtrader.com/items/1985040/55d61787ac/mens-long-sleeve-polo-shirt-3d-model-obj-mtl-fbx.jpg", "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, image, description) values("Rash Guard", 40.87,"https://img1.cgtrader.com/items/982805/607016ba77/player-t-shirt-3d-model-low-poly-obj-c4d-ztl.jpg", "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, image, description) values("Long Sleeve Rash Guard", 50.00,"https://cdn11.bigcommerce.com/s-ve78f4gtf2/images/stencil/500x659/products/177/1130/circulatory_system_rasguard_long_4__74461.1537026875.jpg?c=2", "Amazing product and worth buying. You will absolutely love it");
-            INSERT INTO product (name, price, image, description) values("Premium Gi", 110.00,"https://d1a9v60rjx2a4v.cloudfront.net/2017/03/04/11_04_26_538_Thumb1_1.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Watch", 246.88,"https://previews.123rf.com/images/nikiteev/nikiteev1609/nikiteev160902484/63194994-vector-sketch-womens-wrist-watch-on-white-background.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Sunglasses", 89.00,"https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-product-3_large.png?v=1530129341", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Lamp", 168.00,"https://previews.123rf.com/images/rastudio/rastudio1606/rastudio160600845/57759954-table-lamp-vector-sketch-icon-isolated-on-background-hand-drawn-table-lamp-icon-table-lamp-sketch-ic.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Sneakers", 123.00,"https://i.pinimg.com/originals/2e/5a/d7/2e5ad7586ec483b1867ce6607ee91781.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Backpack", 76.56,"https://previews.123rf.com/images/canatic/canatic1908/canatic190800111/128432812-backpack-sketch-hand-drawn-rucksack-sketch-style-vector-illustration-single-isolated-on-white-backgr.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Cap", 41.0,"https://previews.123rf.com/images/nikiteev/nikiteev1702/nikiteev170200123/72377216-vector-sketch-side-view-net-cap-beach-headwear.jpg", "Amazing product and worth buying. You will absolutely love it");
+            INSERT INTO product (name, price, image, description) values("Headphones", 246.88,"https://previews.123rf.com/images/molaruso/molaruso1205/molaruso120500004/13616210-sketched-headphones.jpg", "Amazing product and worth buying. You will absolutely love it");
 
         </sql>
         <rollback>
